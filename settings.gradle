@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name = "Todolistwebservice13072020"
