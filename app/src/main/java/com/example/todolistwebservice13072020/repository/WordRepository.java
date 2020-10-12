@@ -2,12 +2,12 @@ package com.example.todolistwebservice13072020.repository;
 
 import com.example.todolistwebservice13072020.api.ApiRequest;
 import com.example.todolistwebservice13072020.api.RetrofitInit;
+import com.example.todolistwebservice13072020.model.Response;
 import com.example.todolistwebservice13072020.model.Word;
 
 import java.util.List;
 
 import io.reactivex.Maybe;
-import retrofit2.Response;
 
 public class WordRepository {
     private static WordRepository mInstance = null;
@@ -23,7 +23,7 @@ public class WordRepository {
         }
         return mInstance;
     }
-    public Maybe<Response<List<Word>>> getWordFormPage(Integer page , Integer numItems){
-        return  mApiRequest.getWordFormPage(page , numItems);
+    public Maybe<Response<List<Word>>> getWordFromPage(Integer page , Integer numItems){
+        return  mApiRequest.getWordFromPage(page , numItems);
     }
 }
