@@ -22,20 +22,37 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mWordViewModel = new WordViewModel();
 
+        // Select
 //        mWordViewModel.getWordsFromPage().observe(this, new Observer<Response<List<Word>>>() {
 //            @Override
 //            public void onChanged(Response<List<Word>> listResponse) {
 //                Log.d("BBB",listResponse.getData().size() + "");
 //            }
 //        });
-//
+//          Insert
 //        mWordViewModel.callWordFromPage(1 , 5);
-        mWordViewModel.getWordInsertSuccess().observe(this, new Observer<Response<List<Word>>>() {
+//        mWordViewModel.getWordInsertSuccess().observe(this, new Observer<Response<List<Word>>>() {
+//            @Override
+//            public void onChanged(Response<List<Word>> listResponse) {
+//                Log.d("BBB",listResponse.getData().size() + "");
+//            }
+//        });
+//        mWordViewModel.callInsertWord(new Word("Eight","Tám" ,0));
+//        Update
+//        mWordViewModel.getWordUpdateSuccess().observe(this, new Observer<Response<List<Word>>>() {
+//            @Override
+//            public void onChanged(Response<List<Word>> listResponse) {
+//                Log.d("BBB",listResponse.getData().size() + "");
+//            }
+//        });
+//        mWordViewModel.callUpdateWord("3",1);
+//        Delete
+        mWordViewModel.getWordDeleteSuccess().observe(this, new Observer<Response<List<Word>>>() {
             @Override
             public void onChanged(Response<List<Word>> listResponse) {
                 Log.d("BBB",listResponse.getData().size() + "");
             }
         });
-        mWordViewModel.callInsertWord(new Word("Eight","Tám" ,0));
+        mWordViewModel.callDeleteWord("3");
     }
 }

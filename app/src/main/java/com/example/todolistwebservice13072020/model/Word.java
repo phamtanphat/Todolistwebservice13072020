@@ -1,10 +1,21 @@
 package com.example.todolistwebservice13072020.model;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class Word {
 
+    @SerializedName("id")
+    @Expose
     private String id;
+    @SerializedName("en")
+    @Expose
     private String en;
+    @SerializedName("vn")
+    @Expose
     private String vn;
+    @SerializedName("ismemorized")
+    @Expose
     private Integer ismemorized;
 
     public Word() {

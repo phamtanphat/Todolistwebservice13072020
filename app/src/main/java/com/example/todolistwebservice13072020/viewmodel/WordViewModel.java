@@ -20,11 +20,15 @@ import io.reactivex.schedulers.Schedulers;
 public class WordViewModel extends ViewModel {
     private MutableLiveData<Response<List<Word>>> mResponseWordFormPage;
     private MutableLiveData<Response<List<Word>>> mResponseInsertWord;
+    private MutableLiveData<Response<List<Word>>> mResponseUpdateWord;
+    private MutableLiveData<Response<List<Word>>> mResponseDeleteWord;
     private WordRepository mWordRepository;
 
     public WordViewModel() {
         mResponseWordFormPage = new MutableLiveData<>();
         mResponseInsertWord = new MutableLiveData<>();
+        mResponseUpdateWord = new MutableLiveData<>();
+        mResponseDeleteWord = new MutableLiveData<>();
         mWordRepository = WordRepository.getInstance();
     }
 
@@ -85,5 +89,64 @@ public class WordViewModel extends ViewModel {
     }
     public LiveData<Response<List<Word>>> getWordInsertSuccess(){
         return mResponseInsertWord;
+    }
+
+    public void callUpdateWord(String id , Integer ismemorized){
+        mWordRepository.updateWord(id,ismemorized)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new MaybeObserver<Response<List<Word>>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onSuccess(Response<List<Word>> listResponse) {
+                        mResponseUpdateWord.setValue(listResponse);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+    public LiveData<Response<List<Word>>> getWordUpdateSuccess(){
+        return mResponseUpdateWord;
+    }
+    public void callDeleteWord(String id ){
+        mWordRepository.deleteWord(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new MaybeObserver<Response<List<Word>>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onSuccess(Response<List<Word>> listResponse) {
+                        mResponseDeleteWord.setValue(listResponse);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+    public LiveData<Response<List<Word>>> getWordDeleteSuccess(){
+        return mResponseDeleteWord;
     }
 }

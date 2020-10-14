@@ -26,7 +26,16 @@ public class WordRepository {
     public Maybe<Response<List<Word>>> getWordFromPage(Integer page , Integer numItems){
         return  mApiRequest.getWordFromPage(page , numItems);
     }
+
     public Maybe<Response<List<Word>>> insertWord(Word word){
         return  mApiRequest.insertWord(word.getEn(),word.getVn(),word.getIsmemorized());
+    }
+
+    public Maybe<Response<List<Word>>> updateWord(String id , Integer ismemorized){
+        return  mApiRequest.upDateWord(id,ismemorized);
+    }
+
+    public Maybe<Response<List<Word>>> deleteWord(String id ){
+        return  mApiRequest.deleteWord(id);
     }
 }

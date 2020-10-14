@@ -22,7 +22,17 @@ public interface ApiRequest {
             @Query("numItems") Integer numItems
     );
 
-    @FormUrlEncoded
     @POST("apituvung/insert.php")
+    @FormUrlEncoded
     Maybe<Response<List<Word>>> insertWord(@Field("en") String en , @Field("vn") String vn , @Field("ismemorized") Integer ismemorized);
+
+    @POST("apituvung/update.php")
+    @FormUrlEncoded
+    Maybe<Response<List<Word>>> upDateWord(@Field("id") String id ,  @Field("ismemorized") Integer ismemorized);
+
+
+    @POST("apituvung/delete.php")
+    @FormUrlEncoded
+    Maybe<Response<List<Word>>> deleteWord(@Field("id") String id );
+
 }
