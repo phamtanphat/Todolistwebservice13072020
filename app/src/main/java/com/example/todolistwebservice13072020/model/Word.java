@@ -1,6 +1,7 @@
 package com.example.todolistwebservice13072020.model;
 
 public class Word {
+
     private String id;
     private String en;
     private String vn;

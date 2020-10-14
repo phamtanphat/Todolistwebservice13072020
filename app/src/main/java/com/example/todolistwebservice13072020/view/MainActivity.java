@@ -22,13 +22,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mWordViewModel = new WordViewModel();
 
-        mWordViewModel.getWordsFromPage().observe(this, new Observer<Response<List<Word>>>() {
+//        mWordViewModel.getWordsFromPage().observe(this, new Observer<Response<List<Word>>>() {
+//            @Override
+//            public void onChanged(Response<List<Word>> listResponse) {
+//                Log.d("BBB",listResponse.getData().size() + "");
+//            }
+//        });
+//
+//        mWordViewModel.callWordFromPage(1 , 5);
+        mWordViewModel.getWordInsertSuccess().observe(this, new Observer<Response<List<Word>>>() {
             @Override
             public void onChanged(Response<List<Word>> listResponse) {
                 Log.d("BBB",listResponse.getData().size() + "");
             }
         });
-
-        mWordViewModel.callWordFromPage(1 , 5);
+        mWordViewModel.callInsertWord(new Word("Eight","Tám" ,0));
     }
 }
